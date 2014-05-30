@@ -3,8 +3,8 @@ import java.util.*;
 
 public class RandomGraphGenerator {
 	//PARAMETERS
-	static final int N = 200;			//Number of nodes
-	static final int MAX_DEGREE = 15;	
+	static final int N = 1000;			//Number of nodes
+	static final int MAX_DEGREE = 25;	//Maximum allowed degree of a node
 	
 	static int sum;
 	

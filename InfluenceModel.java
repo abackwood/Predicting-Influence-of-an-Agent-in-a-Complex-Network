@@ -8,9 +8,9 @@ import java.util.List;
 
 public class InfluenceModel {
 	//PARAMETERS
-	static final int N = 200,	//Number of nodes. This must match the settings of the previous phases
+	static final int N = 1000,	//Number of nodes. This must match the settings of the previous phases
 			S = 20,	//Size of the subset
-			K = 20;	//Number of random subsets tested
+			K = 500;	//Number of random subsets tested
 	
 	public static void main(String[] args) {
 		String filename = "Graph_" + N;
@@ -102,7 +102,7 @@ public class InfluenceModel {
 				deviation += Math.abs(yArray[j] - prediction);	//|Y - Y'|
 			}
 			deviation /= N;		//Average the deviation
-			System.out.println("Mean deviation (" + i + "): " + deviation + "\n");
+			System.out.println("Mean deviation (" + (i+1) + "): " + deviation + "\n");
 			deviations[i] = deviation;
 		}
 		
@@ -142,7 +142,8 @@ public class InfluenceModel {
 				sum += deviations[i];
 			}
 			writer.write("Average deviation over all samples: " + (sum / K) + "\n");
-			writer.write("- without out of bounds deviations: " + (correctedSum / correctedK));
+			writer.write("- without out of bounds deviations (" + correctedK + "): " + (correctedSum / correctedK));
+			System.out.println("Based on: " + correctedK);
 			writer.close();
 		}
 		catch (IOException e) {
